@@ -25,7 +25,8 @@ function moveNoButton() {
 }
 
 yesBtn.addEventListener("click", () => {
-    message.textContent = "YAYYY!! 💖💖💖 I knew it!";
+    message.textContent = "YAYYY!! 💖💖💖";
     yesBtn.style.display = "none";
     noBtn.style.display = "none";
+
 });
