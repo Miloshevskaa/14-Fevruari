@@ -4,6 +4,8 @@ const message = document.getElementById("message");
 
 let noClicks = 0;
 let noBtnScale = 1; // почетен размер
+let noBtnX = 0;
+let noBtnY = 0;
 
 noBtn.addEventListener("click", () => {
     noClicks++;
@@ -15,21 +17,21 @@ noBtn.addEventListener("click", () => {
     } else if (noClicks === 3) {
         noBtn.textContent = "Last chance 😭";
         noBtnScale = 0.9; // прво намалување
-        noBtn.style.transform = `scale(${noBtnScale})`;
+        updateNoBtnTransform();
     } else {
-        // поместување + намалување
         moveNoButton();
         noBtnScale *= 0.9; // намалување 10%
-        noBtn.style.transform = `translate(${noBtn.dataset.x || 0}px, ${noBtn.dataset.y || 0}px) scale(${noBtnScale})`;
+        updateNoBtnTransform();
     }
 });
 
 function moveNoButton() {
-    const x = Math.random() * 300 - 150;
-    const y = Math.random() * 300 - 150;
-    noBtn.dataset.x = x; // чуваме координати
-    noBtn.dataset.y = y;
-    noBtn.style.transform = `translate(${x}px, ${y}px) scale(${noBtnScale})`;
+    noBtnX = Math.random() * 300 - 150;
+    noBtnY = Math.random() * 300 - 150;
+}
+
+function updateNoBtnTransform() {
+    noBtn.style.transform = `translate(${noBtnX}px, ${noBtnY}px) scale(${noBtnScale})`;
 }
 
 yesBtn.addEventListener("click", () => {
