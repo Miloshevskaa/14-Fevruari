@@ -13,8 +13,12 @@ noBtn.addEventListener("click", () => {
         noBtn.textContent = "Please? 🥺";
     } else if (noClicks === 3) {
         noBtn.textContent = "Last chance 😭";
+        noBtn.style.fontSize = "1.2rem"; // прво намалување
     } else {
         moveNoButton();
+        // со секое наредно кликање, намалуваме малку
+        const currentSize = parseFloat(window.getComputedStyle(noBtn).fontSize);
+        noBtn.style.fontSize = (currentSize * 0.9) + "px"; // намалува за 10%
     }
 });
 
@@ -30,3 +34,4 @@ yesBtn.addEventListener("click", () => {
     noBtn.style.display = "none";
 
 });
+
